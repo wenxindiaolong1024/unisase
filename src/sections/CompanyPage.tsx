@@ -115,7 +115,7 @@ const [mapLoaded, setMapLoaded] = useState(false);  // ← 加在这里
             <div className="relative">
   <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-gray-100">
     <img 
-      src="/office5.jpg" 
+      src="./office5.jpg" 
       alt="公司办公环境" 
       className="w-full h-full object-cover"
     />

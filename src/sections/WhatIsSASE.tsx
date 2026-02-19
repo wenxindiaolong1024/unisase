@@ -115,7 +115,7 @@ export default function WhatIsSASE() {
               <div className="relative">
   <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-white">
     <img 
-      src="/problem-architecture.png" 
+      src="./problem-architecture.png" 
       alt="SASE 核心架构图" 
       className="w-full h-auto"
     />

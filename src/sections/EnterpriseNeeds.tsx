@@ -130,7 +130,7 @@ export default function EnterpriseNeeds() {
             <div className="relative">
             <div className="bg-white rounded-2xl p-6 shadow-lg">
   <img 
-    src="/xuqiu.png" 
+    src="./xuqiu.png" 
     alt="传统架构问题" 
     className="w-full rounded-lg" 
   />

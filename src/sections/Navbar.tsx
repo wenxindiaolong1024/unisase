@@ -49,7 +49,7 @@ export default function Navbar({ currentPage, onPageChange }: NavbarProps) {
             onClick={() => handleNavClick('home')}
           >
             <img 
-              src="/logo.png" 
+              src="./logo.png" 
               alt="UniSASE Logo" 
               className="h-16 w-auto"
             />

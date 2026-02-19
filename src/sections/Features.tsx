@@ -164,7 +164,7 @@ export default function Features() {
       {/* 右侧图片区域 */}
       <div className="lg:col-span-3">
         <img 
-          src="/gongneng.gif"
+          src="./gongneng.gif"
           alt="UniSASE 功能架构图" 
            className="w-full h-[500px] object-contain rounded-2xl scale-125"
         />

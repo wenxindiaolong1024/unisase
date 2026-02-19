@@ -70,7 +70,7 @@ export default function Architecture() {
           </p>
           
           {/* Architecture Image */}
-          <img  src="/architecture.png"  alt="UniSASE 平台架构图"  className="w-full max-w-4xl mx-auto p-6 rounded-2xl  bg-white" />
+          <img  src="./architecture.png"  alt="UniSASE 平台架构图"  className="w-full max-w-4xl mx-auto p-6 rounded-2xl  bg-white" />
         </div>
 
         {/* Architecture Diagram */}
@@ -130,7 +130,7 @@ export default function Architecture() {
             全球骨干网 Global Backbone & PoPs
           </h2>
           
-                  <img  src="/pop-map.png"  alt="区域  PoPs图"  className="w-full max-w-4xl mx-auto mb-4 rounded-xl" />
+                  <img  src="./pop-map.png"  alt="区域  PoPs图"  className="w-full max-w-4xl mx-auto mb-4 rounded-xl" />
                 </div>
               </div>
             </div>

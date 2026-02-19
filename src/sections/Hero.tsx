@@ -188,7 +188,7 @@ export default function Hero({
             <div className="relative">
               {/* Main Visual - Placeholder for image */}
               <img 
-  src="/hero-dashboard.png" 
+  src="./hero-dashboard.png" 
   alt="UniSASE 平台界面" 
   className="w-full rounded-2xl shadow-lg" 
 />

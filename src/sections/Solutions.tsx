@@ -130,7 +130,7 @@ export default function Solutions({ isCompact = false }: SolutionsProps) {
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="relative bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden p-6 sm:p-10">
         <img 
-          src="/solution.png"
+          src="./solution.png"
           alt="UniSASE 统一身份、控制与可视化架构图" 
           className="w-full h-auto object-contain"
         />

@@ -500,7 +500,7 @@ export default function PlatformPage() {
       {currentProduct.id === 'unictrl' && (
         <div className="mb-8 bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
           <img 
-            src="/product-detail.png" 
+            src="./product-detail.png" 
             alt="UniCtrl 详情图" 
             className="w-full h-auto object-cover rounded-lg" 
           />
@@ -510,7 +510,7 @@ export default function PlatformPage() {
       {currentProduct.id === 'unigate' && (
         <div className="mb-8 bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
           <img 
-            src="/unigate.jpeg" 
+            src="./unigate.jpeg" 
             alt="Unigate 详情图" 
             className="w-full h-auto object-cover rounded-lg" 
           />
