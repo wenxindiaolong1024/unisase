@@ -5,7 +5,8 @@ import {
   Shield, 
   Lock, 
   ArrowRight,
-  CheckCircle2
+  CheckCircle2,
+  Server
 } from 'lucide-react';
 
 const solutions = [
@@ -24,7 +25,7 @@ const solutions = [
     ],
     details: [
       { title: '多种 IdP 支持', items: ['AD, LDAP', 'SAML: Azure AD, Google Workspace', 'OAuth 2.0/OIDC: 飞书、钉钉、企微'] },
-      { title: '认证安全措施', items: ['密码强度/周期策略', '多因素认证(MFA)', '通行密钥(Passkey)'] },
+      { title: '认证安全措施', items: ['安全策略：密码强度/周期; 账号锁定、IP 白名单', '多因素认证 (MFA) 及人机认证 (CAPTCHA)', '通行密钥：指纹、人脸识别等'] },
     ],
   },
   {
@@ -65,7 +66,7 @@ const solutions = [
   },
   {
     id: 'isolation',
-    icon: Lock,
+    icon: Server,
     title: '隔离',
     subtitle: '零信任访问',
     description: '以零信任理念为基础，替代传统 VPN 和基于网络边界的访问模式，实现"最小权限、按需访问"。',
@@ -116,9 +117,9 @@ export default function Solutions({ isCompact = false }: SolutionsProps) {
         {/* Section Header */}
         {!isCompact && (
           <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 text-brand-green text-sm font-medium mb-4">
+            {/* <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 text-brand-green text-sm font-medium mb-4">
               UniSASE 方案
-            </span>
+            </span> */}
             <h2 className="text-3xl sm:text-4xl font-bold text-brand-dark mb-4">
               坚如磐石的网络与安全
             </h2>
@@ -152,9 +153,19 @@ export default function Solutions({ isCompact = false }: SolutionsProps) {
             >
               {/* Header */}
               <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center group-hover:bg-brand-green group-hover:scale-110 transition-all duration-300">
-                  <solution.icon className="w-6 h-6 text-brand-green group-hover:text-white transition-colors" />
-                </div>
+{solution.id === 'isolation' ? (
+  /* 隔离：绿色背景 + 内部虚线圆圈 */
+  <div className="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center group-hover:bg-brand-green transition-colors">
+    <div className="w-8 h-8 rounded-full border-2 border-dashed border-brand-green group-hover:border-white flex items-center justify-center transition-colors">
+      <solution.icon className="w-4 h-4 text-brand-green group-hover:text-white transition-colors" />
+    </div>
+  </div>
+) : (
+  /* 其他：原样式 */
+  <div className="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center group-hover:bg-brand-green transition-colors">
+    <solution.icon className="w-6 h-6 text-brand-green group-hover:text-white transition-colors" />
+  </div>
+)}
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
                     <h3 className="text-xl font-bold text-brand-dark">{solution.title}</h3>

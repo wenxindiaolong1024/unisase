@@ -4,25 +4,25 @@ import { Shield, UserCheck, Network, Lock, Search } from 'lucide-react';
 const categories = [
   {
     icon: UserCheck,
-    title: '认证',
+    title: '认证？',
     color: 'from-blue-500 to-cyan-500',
     items: ['远程接入', '本地接入', '应用认证'],
   },
   {
     icon: Network,
-    title: '连接',
+    title: '连接？',
     color: 'from-green-500 to-emerald-500',
     items: ['连接质量', '暴露面', '信道加密'],
   },
   {
-    icon: Lock,
-    title: '管控',
+    icon: Shield,
+    title: '管控？',
     color: 'from-orange-500 to-amber-500',
     items: ['访问控制', '行为管理', '安全防护'],
   },
   {
     icon: Search,
-    title: '分析',
+    title: '分析？',
     color: 'from-purple-500 to-violet-500',
     items: ['行为分析', '安全分析', '体验分析'],
   },
@@ -55,14 +55,14 @@ export default function EnterpriseNeeds() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 text-brand-green text-sm font-medium mb-4">
-            企业网络与安全需求
-          </span>
+          {/* <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 text-brand-green text-sm font-medium mb-4">
+            企业网络现状
+          </span> */}
           <h2 className="text-3xl sm:text-4xl font-bold text-brand-dark mb-4">
-            碎片化堆叠不再适配企业边界扩张
+            企业网络与安全需求
           </h2>
           <p className="text-lg text-brand-gray max-w-2xl mx-auto">
-            传统网络与安全架构面临诸多挑战，需要统一的平台来解决复杂问题
+            碎片化堆叠不再适配企业边界扩张
           </p>
         </div>
 

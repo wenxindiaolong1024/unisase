@@ -8,6 +8,7 @@ import {
   Database,
   Zap,
   Globe,
+  UserCog,
   CheckCircle2
 } from 'lucide-react';
 
@@ -40,7 +41,7 @@ const subFeatures = [
   { icon: Lock, label: '零信任', desc: '身份驱动' },
   { icon: Globe, label: '全球接入', desc: '就近访问' },
   { icon: Database, label: '威胁情报', desc: '实时防护' },
-  { icon: Zap, label: '应用识别', desc: '精准管控' },
+  { icon:  UserCog, label: '行为管理', desc: '精准管控' },
   { icon: Shield, label: '防火墙', desc: '访问控制' },
 ];
 
@@ -71,9 +72,9 @@ export default function Features() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 text-brand-green text-sm font-medium mb-4">
+          {/* <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 text-brand-green text-sm font-medium mb-4">
             UniSASE 主要功能
-          </span>
+          </span> */}
           <h2 className="text-3xl sm:text-4xl font-bold text-brand-dark mb-4">
             覆盖认证、连接、管控、防护与分析的完整闭环
           </h2>
@@ -147,7 +148,7 @@ export default function Features() {
       
       {/* 左侧文字区域 */}
       <div className="lg:col-span-2 text-center lg:text-left">
-        <h3 className="text-2xl sm:text-3xl font-bold text-brand-dark mb-4">
+        <h3 className="text-2xl sm:text-4xl font-bold text-brand-dark mb-4">
           功能架构全景图
         </h3>
         <p className="text-base text-brand-gray mb-6 leading-relaxed">
@@ -165,7 +166,7 @@ export default function Features() {
         <img 
           src="/gongneng.gif"
           alt="UniSASE 功能架构图" 
-          className="w-full h-auto object-contain rounded-2xl"
+           className="w-full h-[500px] object-contain rounded-2xl scale-125"
         />
       </div>
       

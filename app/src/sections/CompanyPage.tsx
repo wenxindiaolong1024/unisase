@@ -26,11 +26,11 @@ const highlights = [
     title: '联盟成员',
     description: '中国网络信息安全科技创新发展联盟',
   },
-  {
-    icon: Building2,
-    title: '服务规模',
-    description: '联盟服务近2万家企业',
-  },
+  // {
+  //   icon: Building2,
+  //   title: '服务规模',
+  //   description: '联盟服务近2万家企业',
+  // },
 ];
 
 export default function CompanyPage() {
@@ -39,12 +39,9 @@ export default function CompanyPage() {
 // 👇 添加这部分
   const [showMap, setShowMap] = useState(false);
   
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowMap(true);
-    }, 10000);
-    return () => clearTimeout(timer);
-  }, []);  
+ useEffect(() => {
+  setShowMap(true);
+}, []);  
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -63,7 +60,7 @@ export default function CompanyPage() {
 
     return () => observer.disconnect();
   }, []);
-
+const [mapLoaded, setMapLoaded] = useState(false);  // ← 加在这里
   return (
     <main className="min-h-screen pt-20">
       {/* Hero */}
@@ -82,9 +79,9 @@ export default function CompanyPage() {
   <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     {/* ... 后面的内容 */}
           <div className={`text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/20 text-brand-green-light text-sm font-medium mb-6">
+            {/* <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/20 text-brand-green-light text-sm font-medium mb-6">
               Company 关于我们
-            </span>
+            </span> */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
               安信道合
             </h1>
@@ -131,7 +128,7 @@ export default function CompanyPage() {
       {/* Highlights */}
       <section className="py-24 bg-brand-light-gray">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`grid sm:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center max-w-4xl mx-auto transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {highlights.map((item, index) => (
               <div
                 key={item.title}
@@ -192,15 +189,31 @@ export default function CompanyPage() {
             </div>
           </div>
 
-         {showMap && (
-  <div className="mt-12 max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg border border-gray-200 h-80">
-    <iframe
-      src="https://map.baidu.com/search/..."
-      width="100%"
-      height="100%"
-      style={{ border: 0 }}
-      loading="lazy"
-    />
+       {showMap && (
+  <div className="mt-12 max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg border border-gray-200 h-[500px] relative bg-gray-50">
+    {!mapLoaded ? (
+      // 占位图：点击后加载地图
+      <div 
+        className="w-full h-full flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100 transition-colors"
+        onClick={() => setMapLoaded(true)}
+      >
+        <svg className="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <p className="text-gray-600 font-medium text-lg">点击查看地图</p>
+        <p className="text-gray-400 text-sm mt-2">北京市海淀区东升科技园北街2号院5号楼10层101</p>
+      </div>
+    ) : (
+      // 点击后加载 iframe
+      <iframe
+        src="https://api.map.baidu.com/marker?location=40.05880,116.37&title=安信道合（北京）科技发展有限公司&content=北京市海淀区东升科技园北街2号院5号楼10层101&output=html&src=webapp.baidu.openAPIdemo"
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen
+      />
+    )}
   </div>
 )}
         </div>

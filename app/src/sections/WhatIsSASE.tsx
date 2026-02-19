@@ -51,11 +51,11 @@ export default function WhatIsSASE() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 text-brand-green text-sm font-medium mb-4">
-            What is SASE?
-          </span>
+          {/* <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 text-brand-green text-sm font-medium mb-4">
+            什么是 SASE
+          </span> */}
           <h2 className="text-3xl sm:text-4xl font-bold text-brand-dark mb-4">
-            什么是 SASE？
+            What is SASE?
           </h2>
           <p className="text-lg text-brand-gray max-w-3xl mx-auto">
             以身份为核心、以应用为边界，在云上交付一致的网络与安全能力。

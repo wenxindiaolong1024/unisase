@@ -40,19 +40,19 @@ const products = [
     ],
     details: [
       {
-        title: '01 多种 IdP 支持',
+        title: '01多种 IdP 支持',
         items: [
-          'AD, LDAP 集成',
-          'SAML: Azure AD, Google Workspace',
-          'OAuth 2.0/OIDC: 飞书、钉钉、企微',
+          'AD, LDAP',
+          'OAuth: 飞书/钉钉/企微; Azure AD/Google...',
+          'SAML, SMS, EMail',
         ],
       },
       {
         title: '02 认证安全措施',
         items: [
-          '密码强度/周期策略，账号锁定',
-          '多因素认证(MFA)及人机认证',
-          '通行密钥: 指纹、人脸识别',
+          '安全策略：密码强度/周期; 账号锁定、IP 白名单',
+          '多因素认证 (MFA) 及人机认证 (CAPTCHA)',
+          '通行密钥：指纹、人脸识别等 ',
         ],
       },
       {
@@ -78,8 +78,13 @@ const products = [
     icon: Shield,
     name: 'UniCtrl',
     subtitle: '统一控制',
-    description: '统一策略控制与编排引擎，让网络与安全真正可控。',
-    fullDescription: 'UniCtrl 以身份与应用为核心，将网络访问控制、安全策略与业务规则统一建模，实现跨总部、分支机构、云环境及远程接入场景的一致策略执行。平台支持基于用户、设备、应用、位置与风险状态的多维策略控制。',
+    description: '统一策略，一致执行，让网络与安全真正可控',
+    fullDescription: 'UniCtrl 是 UniSASE 的统一策略控制与编排引擎，为企业多网络、多安全场景提供集中化策略管理、全局一致控制与自动化策略分发能力。​  \n\n  UniCtrl 以身份与应用为核心，将网络访问控制、安全策略与业务规则统一建模，实现跨总部、分支机构、云环境及远程接入场景的一致策略执行。平台支持基于用户、设备、应用、位置与风险状态的多维策略控制，确保访问行为始终符合企业安全与合规要求。',
+     highlights: [  // 新增
+    '用户与设备集中管理',
+    '基于身份与应用的策略定义与分发',
+    '软件 / 应用特征 / 威胁情报统一升级',
+  ],
     features: [
       { icon: Server, title: '原生融合', desc: '网络与安全功能深度融合' },
       { icon: Zap, title: '高效引擎', desc: '全功能开启延迟<1ms' },
@@ -177,14 +182,15 @@ const products = [
   id: 'unigate',
   icon: Network,
   name: 'UniGate',
-  subtitle: '统一网关',
-  description: '企业级统一应用网关，实现应用发布、流量调度与安全防护的统一入口。',
+  subtitle: '统一智能安全网关',
+  description: '将分支、园区与本地出口无缝纳入 UniSASE 统一架构。',
   highlights: [
-    '多协议应用发布（HTTP/HTTPS/TCP）',
-    '智能负载均衡与流量调度',
-    'Web应用防火墙（WAF）防护',
+    '一体化承载 SD-WAN / NGFW / ZTNA 接入能力',
+    '本地与云端策略一致执行，快速部署、集中运营',
+    '支持链路冗余、SLA 选路与端到端加密传输',
   ],
-  fullDescription: 'UniGate 是面向企业级场景打造的统一应用网关（UAG）平台，提供应用发布、流量调度、安全防护与访问控制的统一入口能力。\n\nUniGate 支持 HTTP/HTTPS/TCP/UDP 等多协议应用发布，兼容传统应用与现代微服务架构；同时内置智能负载均衡、全球流量调度、Web应用防火墙（WAF）、DDoS防护、Bot管理等完整安全能力，实现"统一应用入口、统一流量管控、统一安全防护"。\n\nUniGate 采用云原生、可扩展架构设计，支持多云部署与弹性伸缩，适用于企业应用发布、多云流量调度、零信任接入网关以及API网关等多种业务场景。',
+  fullDescription: 'UniGate 是 UniSASE 平台的统一智能安全网关，面向企业分支机构、园区网络、工厂现场及本地互联网出口场景，提供原生融合的网络连接与安全防护能力。​    \n\n不同于传统“路由器 + 防火墙 + 行为管理”多设备堆叠模式，UniGate 将网络接入、SD-WAN 组网、访问控制与威胁防护整合为单一平台节点，并通过 UniCtrl 统一策略控制与 UniLog 统一日志分析，实现云端与本地能力的一致交付。',
+  
   features: [
     { icon: Globe, title: '多协议发布', desc: 'HTTP, HTTPS, TCP, UDP' },
     { icon: Shield, title: '安全防护', desc: 'WAF, DDoS, Bot管理' },
@@ -193,27 +199,35 @@ const products = [
   ],
   details: [
     {
-      title: '01 应用发布',
+      title: '01 原生融合的网络与安全能力',
       items: [
-        'Web应用代理与发布',
-        'TCP/UDP四层代理',
-        'API网关与路由管理',
+        ' 一台设备，即可完成网络连接、访问控制与安全防护的统一交付',
+        // '网络能力: 网络准入控制（NAC）, DHCP / 动态路由​ ,负载均衡,IPSec VPN​ , SD-WAN 智能组网​, VoIP 优化。',
+        // 'API网关与路由管理',
       ],
     },
     {
-      title: '02 流量调度',
+      title: '02 高吞吐 · 低时延 · 线性扩展',
       items: [
-        '智能负载均衡算法',
-        '全球流量就近调度',
-        '健康检查与故障转移',
+        '在保障安全能力全开启的情况下，仍然实现高性能转发与低处理时延。',
+        // '全球流量就近调度',
+        // '健康检查与故障转移',
       ],
     },
     {
-      title: '03 安全防护',
+      title: '03 高可靠架构设计',
       items: [
-        'Web应用防火墙（WAF）',
-        'DDoS攻击防护',
-        'Bot管理与验证码',
+        '保障业务连续性，避免单点故障影响。',
+        '满足总部与关键分支对高可用性的严苛要求。',
+        // 'Bot管理与验证码',
+      ],
+    },
+    {
+      title: '04 多平台部署支持',
+      items: [
+        '灵活适配多种部署环境与信创场景。',
+        '硬件架构支持：x86、ARM、信创生态（飞腾、海光等）',
+        '虚拟化支持：公有云、私有云、虚拟化平台',
       ],
     },
   ],
@@ -223,42 +237,41 @@ const products = [
   icon: Smartphone,
   name: 'UniMobile',
   subtitle: '统一移动接入',
-  description: '企业级移动设备管理与安全接入平台，实现移动终端的统一管控与安全访问。',
+  description: '零信任安全接入客户端，让身份成为企业访问的唯一信任基础。',
   highlights: [
-    '移动设备全生命周期管理（MDM）',
-    '企业应用安全容器（MAM）',
-    '移动端零信任安全接入',
+    '支持 LDAP / Radius / SAML / OAuth2.0 / OIDC 等认证体系',
+    '支持 MFA、CAPTCHA、WebAuthn（指纹/人脸）等安全认证措施',
+    '支持“身份漫游”，从客户端延伸至网关与业务应用系统',
+    '支持 Windows、macOS、Android、iOS 多平台统一接入',
   ],
-  fullDescription: 'UniMobile 是面向企业级场景打造的统一移动接入（EMM）平台，提供移动设备管理、应用安全、网络接入与数据保护的统一管控能力。\n\nUniMobile 支持 iOS、Android 等主流移动平台，提供设备注册、配置管理、应用分发、安全策略、远程擦除等完整MDM能力；同时内置企业应用安全容器、移动VPN、单点登录、数据防泄漏等安全功能，实现"统一设备管控、统一应用安全、统一网络接入"。\n\nUniMobile 采用轻量化、易部署架构设计，支持私有化与SaaS化部署，适用于企业移动办公、BYOD管理、外勤人员接入以及移动业务系统安全访问等多种业务场景。',
+  fullDescription: 'UniMobile 是 UniSASE 架构中的零信任客户端，面向远程办公、移动办公与跨网络访问场景，为企业提供基于身份驱动的安全接入能力。​    \n\n不同于传统 VPN 依赖网络边界建立“隧道式信任”，UniMobile 以身份为核心，将用户、设备与访问行为纳入统一的认证与策略体系，实现“先验证、再访问、按需授权”的零信任访问模式。​    \n\n通过与 UniAuth 的统一身份体系及 UniCtrl 的策略控制平面深度联动，UniMobile 可将终端接入、身份校验、访问控制与日志审计整合为一体，使远程用户、本地用户与移动用户在同一套安全框架下运行，确保策略一致、权限可控、行为可追溯。',
   features: [
-    { icon: Smartphone, title: '设备管理', desc: 'MDM, 配置, 远程控制' },
-    { icon: Lock, title: '应用安全', desc: 'MAM, 安全容器, 防泄漏' },
-    { icon: Globe, title: '安全接入', desc: '移动VPN, 零信任' },
-    { icon: Shield, title: '数据保护', desc: '加密, 远程擦除' },
+    // { icon: Smartphone, title: '设备管理', desc: 'MDM, 配置, 远程控制' },
+    // { icon: Lock, title: '应用安全', desc: 'MAM, 安全容器, 防泄漏' },
+    // { icon: Globe, title: '安全接入', desc: '移动VPN, 零信任' },
+    // { icon: Shield, title: '数据保护', desc: '加密, 远程擦除' },
   ],
   details: [
     {
-      title: '01 设备管理',
+      title: '01 动态身份信任体系',
       items: [
-        '设备注册与资产盘点',
-        '配置策略远程下发',
-        '远程锁定与数据擦除',
+        '多维身份绑定（用户/设备/行为）',
+        '持续风险评估与动态授权',
       ],
     },
     {
-      title: '02 应用安全',
+      title: '02 去边界化架构革新',
       items: [
-        '企业应用安全容器',
-        '应用黑白名单管理',
-        '数据防泄漏（DLP）',
+        '无隧道直连业务系统',
+        '多端策略一致性（iOS/Android/PC）',
       ],
     },
     {
-      title: '03 网络接入',
+      title: '03 安全能力原生融合',
       items: [
-        '移动VPN安全隧道',
-        '零信任持续验证',
-        '单点登录（SSO）',
+        '统一身份中枢（UniAuth）',
+        '策略智能联动（UniCtrl）',
+        '行为审计闭环',
       ],
     },
   ],
@@ -274,7 +287,7 @@ const products = [
     '基于身份的网络访问控制（NAC）',
     '终端安全合规检查与隔离',
   ],
-  fullDescription: 'UniAP 是面向企业级场景打造的统一接入点（NAC）平台，提供有线无线网络接入、身份认证、访问控制与终端安全的统一管理能力。\n\nUniAP 支持 802.1X、MAC认证、Portal认证等多种接入方式，兼容主流网络设备厂商；同时内置终端安全合规检查、访客网络管理、IoT设备识别、微分段隔离等安全功能，实现"统一网络接入、统一身份认证、统一安全管控"。\n\nUniAP 采用分布式、高可用架构设计，支持集中管理与分级部署，适用于企业园区网络、分支机构接入、访客网络管理以及IoT设备安全接入等多种业务场景。',
+  fullDescription: 'UniAP 是 UniSASE 面向园区与办公场景推出的安全无线接入设备，为企业提供高质量 Wi-Fi 覆盖与统一安全接入能力。\n\nUniAP 支持与 UniAuth 的统一身份体系联动，提供基于身份的无线准入认证与用户管理能力，并结合 UniCtrl 的策略控制，实现对不同用户、设备、访客与物联网终端的分组、隔离与访问权限控制，确保无线网络从“可用”升级为“可控”。\n\n通过 UniAP，企业可将无线接入纳入 UniSASE 的统一运营体系，实现从终端准入、访问控制到日志审计的完整闭环，降低园区网络管理复杂度，同时提升安全性与使用体验。',
   features: [
     { icon: Wifi, title: '无线接入', desc: 'WiFi6, 漫游, 定位' },
     { icon: Network, title: '有线接入', desc: '802.1X, MAC认证' },
@@ -283,27 +296,32 @@ const products = [
   ],
   details: [
     {
-      title: '01 接入认证',
+      title: '01 统一接入',
       items: [
-        '802.1X企业级认证',
-        'MAC地址白名单',
-        'Portal访客认证',
+        '有线无线网络统一认证',
+        '多终端一致体验',
+        // 'Portal访客认证',
       ],
     },
     {
-      title: '02 安全合规',
+      title: '02 身份管控',
       items: [
-        '终端安全检查（杀毒软件、补丁）',
-        '不合规终端自动隔离',
-        'IoT设备识别与管控',
+        '基于身份的NAC',
+        '分组隔离与权限控制',
+        // 'IoT设备识别与管控',
       ],
     },
     {
-      title: '03 网络管控',
+      title: '03 终端安全',
       items: [
-        '基于身份的动态授权',
-        '网络微分段隔离',
-        '访客网络与员工网络分离',
+        '合规检查与异常隔离',
+        '防范不安全终端接入',
+      ],
+    },
+    {
+      title: '04 闭环管理',
+      items: [
+        '终端准入-访问控制-日志审计全链路覆盖',
       ],
     },
   ],
@@ -358,9 +376,9 @@ export default function PlatformPage() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/20 text-white text-sm font-medium mb-6">
+            {/* <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/20 text-white text-sm font-medium mb-6">
               Platform 产品中心
-            </span>
+            </span> */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-dark mb-6">
               重新定义企业网络安全边界
             </h1>
@@ -393,7 +411,7 @@ export default function PlatformPage() {
       </section>
 
       {/* Products Navigation */}
-      <section ref={sectionRef} className="py-16 bg-white border-b">
+     <section ref={sectionRef} className="py-16 bg-white border-b relative z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-4">
             {products.map((product) => (
@@ -477,19 +495,27 @@ export default function PlatformPage() {
                     </div>
                   </div>
                         ))}
-        
-       {/* 只在 UniCtrl 标签下显示图片 */}
-{currentProduct.id === 'unictrl' && (
-  <div className="col-span-2 bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-    <img 
-      src="/product-detail.png" 
-      alt="UniCtrl 详情图" 
-      className="w-full h-auto object-cover rounded-lg" 
-    />
-  </div>
-)}
-        
       </div>
+      {/* 图片展示区域 */}
+      {currentProduct.id === 'unictrl' && (
+        <div className="mb-8 bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <img 
+            src="/product-detail.png" 
+            alt="UniCtrl 详情图" 
+            className="w-full h-auto object-cover rounded-lg" 
+          />
+        </div>
+      )}
+
+      {currentProduct.id === 'unigate' && (
+        <div className="mb-8 bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <img 
+            src="/unigate.jpeg" 
+            alt="Unigate 详情图" 
+            className="w-full h-auto object-cover rounded-lg" 
+          />
+        </div>
+      )}
 
               <Button
                 className="bg-brand-green hover:bg-brand-green/90 text-white"
@@ -510,26 +536,38 @@ export default function PlatformPage() {
               </Button>
             </div>
 
-            {/* Right Content - Details */}
-            <div className="space-y-6">
-              {currentProduct.details.map((detail, index) => (
-                <div
-                  key={detail.title}
-                  className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <h3 className="text-lg font-bold text-brand-dark mb-4">{detail.title}</h3>
-                  <ul className="space-y-2">
-                    {detail.items.map((item) => (
-                      <li key={item} className="flex items-center gap-2 text-brand-gray">
-                        <CheckCircle2 className="w-4 h-4 text-brand-green flex-shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+        {/* Right Content - Details */}
+<div className="space-y-6">
+  {currentProduct.id === 'unimobile' || currentProduct.id === 'uniap' ? (
+    // UniMobile：右侧显示图片
+    <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm h-full flex items-center justify-center">
+      <img
+  src={`/${currentProduct.id}.jpeg`}
+  alt={`${currentProduct.title} 详情图`}
+  className="w-full h-auto object-cover rounded-lg"
+/>
+    </div>
+  ) : (
+    // 其他产品：右侧显示 details
+    currentProduct.details?.map((detail, index) => (
+      <div
+        key={detail.title}
+        className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"
+        style={{ animationDelay: `${index * 100}ms` }}
+      >
+        <h3 className="text-lg font-bold text-brand-dark mb-4">{detail.title}</h3>
+        <ul className="space-y-2">
+          {detail.items.map((item) => (
+            <li key={item} className="flex items-center gap-2 text-brand-gray">
+              <CheckCircle2 className="w-4 h-4 text-brand-green flex-shrink-0" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  )}
+</div>
           </div>
         </div>
       </section>

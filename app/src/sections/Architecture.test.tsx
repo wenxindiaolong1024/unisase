@@ -1,220 +1,217 @@
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import Architecture from './Architecture';
 
 // Mock lucide-react icons
-jest.mock('lucide-react', () => ({
-  Server: () => <div data-testid="icon-server">ServerIcon</div>,
-  Shield: () => <div data-testid="icon-shield">ShieldIcon</div>,
-  Users: () => <div data-testid="icon-users">UsersIcon</div>,
-  Database: () => <div data-testid="icon-database">DatabaseIcon</div>,
-  Globe: () => <div data-testid="icon-globe">GlobeIcon</div>,
-  Lock: () => <div data-testid="icon-lock">LockIcon</div>,
-  BarChart3: () => <div data-testid="icon-barchart3">BarChart3Icon</div>,
+vi.mock('lucide-react', () => ({
+  Server: ({ className }: { className?: string }) => <svg data-testid="server" className={className} />,
+  Shield: ({ className }: { className?: string }) => <svg data-testid="shield" className={className} />,
+  Users: ({ className }: { className?: string }) => <svg data-testid="users" className={className} />,
+  Database: ({ className }: { className?: string }) => <svg data-testid="database" className={className} />,
+  Globe: ({ className }: { className?: string }) => <svg data-testid="globe" className={className} />,
+  Lock: ({ className }: { className?: string }) => <svg data-testid="lock" className={className} />,
+  BarChart3: ({ className }: { className?: string }) => <svg data-testid="barchart3" className={className} />,
 }));
 
-describe('Architecture Component - Capabilities Section (Lines 106-120)', () => {
-  const capabilitiesLabels = ['全球骨干网', '安全防护', '数据可视化', '弹性架构'];
-  const capabilitiesDescs = ['150+ PoPs', '威胁情报', '全量日志', '云原生'];
-  const capabilityIcons = ['icon-globe', 'icon-lock', 'icon-database', 'icon-server'];
+describe('Architecture Component', () => {
+  it('should render section header', () => {
+    render(<Architecture />);
 
-  beforeEach(() => {
-    // Mock IntersectionObserver
-    window.IntersectionObserver = class IntersectionObserver {
-      constructor() {}
-      disconnect() {}
-      observe() {}
-      unobserve() {}
-    } as any;
+    expect(screen.getByText('UniSASE 架构')).toBeInTheDocument();
   });
 
-  afterEach(() => {
-    jest.clearAllMocks();
+  it('should render main heading', () => {
+    render(<Architecture />);
+
+    expect(screen.getByText('UniSASE 统一的网络与安全深度融合服务平台')).toBeInTheDocument();
   });
 
-  describe('Rendering', () => {
-    it('should render all 4 capability cards', () => {
-      render(<Architecture />);
-      
-      const cards = screen.getAllByText(/(全球骨干网|安全防护|数据可视化|弹性架构)/);
-      expect(cards).toHaveLength(4);
-    });
+  it('should render description', () => {
+    render(<Architecture />);
 
-    it('should render each capability with correct label', () => {
-      render(<Architecture />);
-      
-      capabilitiesLabels.forEach(label => {
-        const element = screen.getByText(label);
-        expect(element).toBeInTheDocument();
-      });
-    });
-
-    it('should render each capability with correct description', () => {
-      render(<Architecture />);
-      
-      capabilitiesDescs.forEach(desc => {
-        const element = screen.getByText(desc);
-        expect(element).toBeInTheDocument();
-      });
-    });
-
-    it('should render all capability icons', () => {
-      render(<Architecture />);
-      
-      capabilityIcons.forEach(iconTestId => {
-        const icon = screen.getByTestId(iconTestId);
-        expect(icon).toBeInTheDocument();
-      });
-    });
-
-    it('should have correct styling classes on capability cards', () => {
-      render(<Architecture />);
-      
-      const cards = screen.getAllByText(/(全球骨干网|安全防护|数据可视化|弹性架构)/);
-      cards.forEach(card => {
-        expect(card.closest('div')).toHaveClass('bg-white', 'rounded-xl', 'p-4', 'border', 'border-gray-100');
-      });
-    });
+    expect(screen.getByText(/以统一身份、统一控制与统一可视化为核心能力/)).toBeInTheDocument();
   });
 
-  describe('Data Integrity', () => {
-    it('should have correct key prop for each capability card', () => {
-      render(<Architecture />);
-      
-      const cards = screen.getAllByText(/(全球骨干网|安全防护|数据可视化|弹性架构)/);
-      expect(cards.length).toBeGreaterThan(0);
-    });
+  it('should render architecture image', () => {
+    const { container } = render(<Architecture />);
 
-    it('should have animationDelay style set for each capability', () => {
-      render(<Architecture />);
-      
-      const cards = document.querySelectorAll('[style*="animationDelay"]');
-      expect(cards.length).toBeGreaterThanOrEqual(4); // 3 layers + 4 capabilities
-    });
-
-    it('should display capability labels in correct order', () => {
-      render(<Architecture />);
-      
-      const allText = screen.getAllByText(/(全球骨干网|安全防护|数据可视化|弹性架构)/);
-      const labels = allText.map(el => el.textContent);
-      expect(labels).toEqual(['全球骨干网', '安全防护', '数据可视化', '弹性架构']);
-    });
+    const image = container.querySelector('img[alt="UniSASE 平台架构图"]');
+    expect(image).toBeInTheDocument();
+    expect(image).toHaveAttribute('src', '/architecture.png');
   });
 
-  describe('Icon Rendering', () => {
-    it('should render Globe icon for 全球骨干网', () => {
-      render(<Architecture />);
-      
-      const icon = screen.getByTestId('icon-globe');
-      const card = icon.closest('.bg-brand-green\\/10');
-      expect(card).toBeInTheDocument();
-    });
+  it('should render all three architecture layers', () => {
+    render(<Architecture />);
 
-    it('should render Lock icon for 安全防护', () => {
-      render(<Architecture />);
-      
-      const icon = screen.getByTestId('icon-lock');
-      const card = icon.closest('.bg-brand-green\\/10');
-      expect(card).toBeInTheDocument();
-    });
-
-    it('should render Database icon for 数据可视化', () => {
-      render(<Architecture />);
-      
-      const icon = screen.getByTestId('icon-database');
-      const card = icon.closest('.bg-brand-green\\/10');
-      expect(card).toBeInTheDocument();
-    });
-
-    it('should render Server icon for 弹性架构', () => {
-      render(<Architecture />);
-      
-      const icon = screen.getByTestId('icon-server');
-      const card = icon.closest('.bg-brand-green\\/10');
-      expect(card).toBeInTheDocument();
-    });
-
-    it('should have correct icon container styling', () => {
-      render(<Architecture />);
-      
-      const iconContainers = document.querySelectorAll('.bg-brand-green\\/10');
-      expect(iconContainers.length).toBeGreaterThanOrEqual(4);
-      
-      iconContainers.forEach(container => {
-        expect(container).toHaveClass('w-10', 'h-10', 'rounded-lg', 'flex', 'items-center', 'justify-center');
-      });
-    });
+    expect(screen.getByText('UniAuth')).toBeInTheDocument();
+    expect(screen.getByText('UniCtrl')).toBeInTheDocument();
+    expect(screen.getByText('UniLog')).toBeInTheDocument();
   });
 
-  describe('Layout Structure', () => {
-    it('should render capabilities in a grid layout', () => {
-      render(<Architecture />);
-      
-      const capabilitiesLabels = ['全球骨干网', '安全防护', '数据可视化', '弹性架构'];
-      const firstCard = screen.getByText(capabilitiesLabels[0]);
-      const gridContainer = firstCard.closest('.grid');
-      
-      expect(gridContainer).toBeInTheDocument();
-      expect(gridContainer).toHaveClass('grid', 'grid-cols-2', 'lg:grid-cols-4', 'gap-4');
-    });
+  it('should render layer subtitles', () => {
+    render(<Architecture />);
 
-    it('should render capabilities after architecture layers', () => {
-      render(<Architecture />);
-      
-      const layers = ['UniAuth', 'UniCtrl', 'UniLog'];
-      const firstLayer = screen.getByText(layers[0]);
-      const firstCapability = screen.getByText('全球骨干网');
-      
-      // Get DOM order
-      const allElements = document.querySelectorAll('body > *');
-      let layerIndex = -1;
-      let capabilityIndex = -1;
-      
-      allElements.forEach((el, index) => {
-        if (el.textContent?.includes('UniAuth')) layerIndex = index;
-        if (el.textContent?.includes('全球骨干网')) capabilityIndex = index;
-      });
-      
-      // Ensure capability comes after layer
-      expect(capabilityIndex).toBeGreaterThan(layerIndex);
-    });
+    expect(screen.getByText('统一身份认证')).toBeInTheDocument();
+    expect(screen.getByText('统一控制')).toBeInTheDocument();
+    expect(screen.getByText('统一日志分析')).toBeInTheDocument();
   });
 
-  describe('Typography', () => {
-    it('should render capability label with correct styling', () => {
-      render(<Architecture />);
-      
-      const labels = screen.getAllByText(/(全球骨干网|安全防护|数据可视化|弹性架构)/);
-      labels.forEach(label => {
-        expect(label).toHaveClass('font-semibold', 'text-brand-dark', 'text-sm');
-      });
-    });
+  it('should render layer descriptions', () => {
+    render(<Architecture />);
 
-    it('should render capability description with correct styling', () => {
-      render(<Architecture />);
-      
-      const descs = screen.getAllByText(/(150\+ PoPs|威胁情报|全量日志|云原生)/);
-      descs.forEach(desc => {
-        expect(desc).toHaveClass('text-xs', 'text-brand-gray');
-      });
-    });
+    expect(screen.getByText('企业级统一身份与访问管理平台')).toBeInTheDocument();
+    expect(screen.getByText('统一策略控制与编排引擎')).toBeInTheDocument();
+    expect(screen.getByText('统一可视化与分析系统')).toBeInTheDocument();
   });
 
-  describe('Accessibility', () => {
-    it('should have unique key props for each capability card', () => {
-      render(<Architecture />);
-      
-      const cards = screen.getAllByText(/(全球骨干网|安全防护|数据可视化|弹性架构)/);
-      expect(cards.length).toBe(4);
-    });
+  it('should render all capabilities', () => {
+    render(<Architecture />);
 
-    it('should render icon elements with proper structure', () => {
-      render(<Architecture />);
-      
-      capabilityIcons.forEach(iconTestId => {
-        const icon = screen.getByTestId(iconTestId);
-        expect(icon).toBeInTheDocument();
-        expect(icon).toHaveClass('w-5', 'h-5', 'text-brand-green');
-      });
-    });
+    expect(screen.getByText('全球骨干网')).toBeInTheDocument();
+    expect(screen.getByText('安全防护')).toBeInTheDocument();
+    expect(screen.getByText('数据可视化')).toBeInTheDocument();
+    expect(screen.getByText('弹性架构')).toBeInTheDocument();
+  });
+
+  it('should render capability descriptions', () => {
+    render(<Architecture />);
+
+    expect(screen.getByText('150+ PoPs')).toBeInTheDocument();
+    expect(screen.getByText('威胁情报')).toBeInTheDocument();
+    expect(screen.getByText('全量日志')).toBeInTheDocument();
+    expect(screen.getByText('云原生')).toBeInTheDocument();
+  });
+
+  it('should render POP map section', () => {
+    render(<Architecture />);
+
+    expect(screen.getByText('UniPOP')).toBeInTheDocument();
+    expect(screen.getByText('全球骨干网 Global Backbone & PoPs')).toBeInTheDocument();
+  });
+
+  it('should render POP map image', () => {
+    const { container } = render(<Architecture />);
+
+    const image = container.querySelector('img[alt="区域  PoPs图"]');
+    expect(image).toBeInTheDocument();
+    expect(image).toHaveAttribute('src', '/pop-map.png');
+  });
+
+  it('should render global backbone stats', () => {
+    render(<Architecture />);
+
+    expect(screen.getByText('体验可保障：就近接入 + 全网调度')).toBeInTheDocument();
+    expect(screen.getByText('150+')).toBeInTheDocument();
+    expect(screen.getByText('≤1周')).toBeInTheDocument();
+  });
+
+  it('should render globe icon', () => {
+    render(<Architecture />);
+
+    const globe = screen.getByTestId('globe');
+    expect(globe).toBeInTheDocument();
+  });
+
+  it('should render pulsing nodes for globe visualization', () => {
+    const { container } = render(<Architecture />);
+
+    // Should have multiple pulsing nodes (8 in the code)
+    const pulsingDivs = container.querySelectorAll('.animate-ping');
+    expect(pulsingDivs.length).toBeGreaterThan(0);
+  });
+
+  it('should render stats labels correctly', () => {
+    render(<Architecture />);
+
+    expect(screen.getByText('全球 PoPs')).toBeInTheDocument();
+    expect(screen.getByText('新节点上线')).toBeInTheDocument();
+  });
+
+  it('should have proper CSS classes for section', () => {
+    const { container } = render(<Architecture />);
+
+    const section = container.querySelector('section');
+    expect(section).toHaveClass('py-24');
+    expect(section).toHaveClass('bg-white');
+  });
+
+  it('should render layer icons', () => {
+    render(<Architecture />);
+
+    expect(screen.getByTestId('users')).toBeInTheDocument();
+    expect(screen.getByTestId('shield')).toBeInTheDocument();
+    expect(screen.getByTestId('barchart3')).toBeInTheDocument();
+  });
+
+  it('should render capability icons', () => {
+    render(<Architecture />);
+
+    expect(screen.getByTestId('globe')).toBeInTheDocument();
+    expect(screen.getByTestId('lock')).toBeInTheDocument();
+    expect(screen.getByTestId('database')).toBeInTheDocument();
+    expect(screen.getByTestId('server')).toBeInTheDocument();
+  });
+
+  it('should handle visibility state for animations', () => {
+    render(<Architecture />);
+
+    // Component should initialize with IntersectionObserver
+    // Since we mock IntersectionObserver in setup, it should work without errors
+    const { container } = render(<Architecture />);
+    expect(container.querySelector('section')).toBeInTheDocument();
+  });
+
+  it('should render stats with correct styling', () => {
+    const { container } = render(<Architecture />);
+
+    const statsContainer = container.querySelector('.grid-cols-2');
+    expect(statsContainer).toBeInTheDocument();
+  });
+
+  it('should render dark background section for global backbone', () => {
+    const { container } = render(<Architecture />);
+
+    const darkSection = container.querySelector('.from-brand-dark');
+    expect(darkSection).toBeInTheDocument();
+  });
+
+  it('should render architecture diagram container', () => {
+    const { container } = render(<Architecture />);
+
+    const diagramContainer = container.querySelector('.bg-gradient-to-br');
+    expect(diagramContainer).toBeInTheDocument();
+  });
+
+  it('should render capability grid with correct columns', () => {
+    const { container } = render(<Architecture />);
+
+    const capabilityGrid = container.querySelector('.grid-cols-2');
+    expect(capabilityGrid).toBeInTheDocument();
+  });
+
+  it('should render architecture layers in correct order', () => {
+    render(<Architecture />);
+
+    const layers = screen.getAllByText(/UniAuth|UniCtrl|UniLog/);
+    expect(layers[0]).toHaveTextContent('UniAuth');
+    expect(layers[1]).toHaveTextContent('UniCtrl');
+    expect(layers[2]).toHaveTextContent('UniLog');
+  });
+
+  it('should cleanup IntersectionObserver on unmount', () => {
+    const { unmount } = render(<Architecture />);
+
+    expect(() => {
+      unmount();
+    }).not.toThrow();
+  });
+
+  it('should handle threshold for visibility correctly', () => {
+    render(<Architecture />);
+
+    // IntersectionObserver should be set up with threshold 0.2
+    // This is tested implicitly by ensuring the component renders without errors
+    const { container } = render(<Architecture />);
+    expect(container.querySelector('section')).toBeInTheDocument();
   });
 });

@@ -7,6 +7,9 @@ const footerLinks = [
       { label: 'UniAuth 统一身份', href: '#platform' },
       { label: 'UniCtrl 统一控制', href: '#platform' },
       { label: 'UniLog 统一日志', href: '#platform' },
+      { label: 'UniGate 统一智能安全网关', href: '#platform' },
+      { label: 'UniMobile 统一移动接入', href: '#platform' },
+      { label: 'UniAP 统一接入点', href: '#platform' },
     ],
   },
   {

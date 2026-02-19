@@ -25,12 +25,12 @@ const architectureLayers = [
   },
 ];
 
-const capabilities = [
-  { icon: Globe, label: '全球骨干网', desc: '150+ PoPs' },
-  { icon: Lock, label: '安全防护', desc: '威胁情报' },
-  { icon: Database, label: '数据可视化', desc: '全量日志' },
-  { icon: Server, label: '弹性架构', desc: '云原生' },
-];
+// const capabilities = [
+//   { icon: Globe, label: '全球骨干网', desc: '150+ PoPs' },
+//   { icon: Lock, label: '安全防护', desc: '威胁情报' },
+//   { icon: Database, label: '数据可视化', desc: '全量日志' },
+//   { icon: Server, label: '弹性架构', desc: '云原生' },
+// ];
 
 export default function Architecture() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -59,11 +59,11 @@ export default function Architecture() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 text-brand-green text-sm font-medium mb-4">
+          {/* <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 text-brand-green text-sm font-medium mb-4">
             UniSASE 架构
-          </span>
+          </span> */}
           <h2 className="text-3xl sm:text-4xl font-bold text-brand-dark mb-4">
-            统一的网络与安全深度融合服务平台
+            UniSASE 统一的网络与安全深度融合服务平台
           </h2>
           <p className="text-lg text-brand-gray max-w-3xl mx-auto mb-12">
             以统一身份、统一控制与统一可视化为核心能力，构建完整的网络与安全闭环
@@ -98,8 +98,8 @@ export default function Architecture() {
            
 
             {/* Bottom Capabilities */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-              {capabilities.map((cap, index) => (
+            {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-0"> */}
+              {/* {capabilities.map((cap, index) => (
                 <div
                   key={cap.label}
                   className="flex items-center gap-3 bg-white rounded-xl p-4 border border-gray-100 hover:border-brand-green/30 hover:shadow-md transition-all"
@@ -113,8 +113,8 @@ export default function Architecture() {
                     <div className="text-xs text-brand-gray">{cap.desc}</div>
                   </div>
                 </div>
-              ))}
-            </div>
+              ))} */}
+            {/* </div> */}
             
            
           </div>
@@ -123,9 +123,9 @@ export default function Architecture() {
             <div className="bg-white rounded-2xl p-6">
               <div className="flex items-center justify-center">
                 <div className="text-center">
-                 <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 text-brand-green text-sm font-medium mb-4">
+                 {/* <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 text-brand-green text-sm font-medium mb-4">
              UniPOP
-          </span>
+          </span> */}
 <h2 className="text-3xl sm:text-4xl font-bold text-brand-dark mb-4">
             全球骨干网 Global Backbone & PoPs
           </h2>

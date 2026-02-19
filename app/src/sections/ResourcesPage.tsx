@@ -109,9 +109,9 @@ export default function ResourcesPage() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/20 text-brand-green-light text-sm font-medium mb-6">
+            {/* <span className="inline-block px-4 py-1.5 rounded-full bg-brand-green/20 text-brand-green-light text-sm font-medium mb-6">
               Resources 支持与服务
-            </span>
+            </span> */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
               资源中心
             </h1>
@@ -134,7 +134,8 @@ export default function ResourcesPage() {
             {clients.map((client, index) => (
               <div
                 key={client.name}
-                className={`group bg-brand-light-gray rounded-2xl p-6 border border-gray-100 hover:border-brand-green/30 hover:shadow-lg transition-all duration-500 ${
+                onClick={() => window.open(client.downloadUrl, '_blank')}
+                className={`cursor-pointer group bg-brand-light-gray rounded-2xl p-6 border border-gray-100 hover:border-brand-green/30 hover:shadow-lg transition-all duration-500 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
@@ -144,16 +145,17 @@ export default function ResourcesPage() {
                 </div>
                 <h3 className="text-lg font-bold text-brand-dark mb-1">{client.name}</h3>
                 <p className="text-sm text-brand-gray mb-4">
-                  {client.version} · {client.size}
-                </p>
-                <Button
+  {client.version} · {client.size}
+  <span className="text-brand-green ml-2 text-xs">点击下载或跳转至下载页面 →</span>
+</p>
+                {/* <Button
                   variant="outline"
                   className="w-full border-brand-green text-brand-green hover:bg-brand-green hover:text-white"
                   onClick={() => window.open(client.downloadUrl, '_blank')}
                 >
                   <Download className="w-4 h-4 mr-2" />
                   下载
-                </Button>
+                </Button> */}
               </div>
             ))}
           </div>

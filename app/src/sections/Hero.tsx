@@ -9,7 +9,7 @@ interface HeroProps {
 }
 
 export default function Hero({ 
-  title = "UniSASE磐络™",
+  title = "UniSASE 磐络™",
   subtitle = "统一网络、安全、身份与可视化能力——更快交付、更易运营、更可控风险。",
   showCTA = true 
 }: HeroProps) {
@@ -125,16 +125,16 @@ export default function Hero({
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-green/10 border border-brand-green/20">
+            {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-green/10 border border-brand-green/20">
               <Shield className="w-4 h-4 text-brand-green" />
               <span className="text-sm text-brand-dark font-medium">企业级 SASE 解决方案</span>
-            </div>
+            </div> */}
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-dark leading-tight">
               {title.split('——')[0]}
-              <span className="block mt-2 text-brand-green">
-                {title.split('——')[1] || '坚如磐石的网络与安全'}
-              </span>
+              <span className="block mt-2 text-brand-green text-3xl sm:text-4xl lg:text-5xl">
+  {title.split('——')[1] || '坚如磐石的网络与安全'}
+</span>
             </h1>
             
             <p className="text-lg sm:text-xl text-brand-gray max-w-xl leading-relaxed">
@@ -167,7 +167,7 @@ export default function Hero({
             )}
             
             {/* Stats */}
-            <div className="flex flex-wrap gap-8 pt-8 border-t border-gray-200">
+            {/* <div className="flex flex-wrap gap-8 pt-8 border-t border-gray-200">
               <div>
                 <div className="text-3xl font-bold text-brand-green">150+</div>
                 <div className="text-sm text-brand-gray">全球 PoPs</div>
@@ -180,7 +180,7 @@ export default function Hero({
                 <div className="text-3xl font-bold text-brand-green">99.99%</div>
                 <div className="text-sm text-brand-gray">服务可用性</div>
               </div>
-            </div>
+            </div> */}
           </div>
           
           {/* Right Content - Image */}
